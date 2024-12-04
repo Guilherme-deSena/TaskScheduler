@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task Scheduler</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+    <h1>Task Scheduler</h1>
+    <h3>Add Task</h3>
+    <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+        <label for="add-name">Task name:</label><br>
+        <input type="text" id="add-name" placeholder="Task"> <br>
+
+        <label for="add-start">Day and time the task will start:</label><br>
+        <input type="datetime-local" id="add-start" name="Task Start Date" /> <br>
+
+        <label for="add-end">Day and time the task will end:</label><br>
+        <input type="datetime-local" id="add-end" name="Task End Date" /> <br>
+
+        <label for="add-priority">Task priority:</label><br>
+        <input type="number" id="add-priority" placeholder="Priority"> <br> <br>
+        <input type="submit" value="Add">
+        <p id="feedback-add"></p>
+    </form>
+
+    <div hidden id="editForm">
+        <h3>Edit Task</h3>
+        <form action="javascript:void(0);" onsubmit="updateItem()">
+            <input type="hidden" id="edit-id">
+
+            <label for="edit-name">Task name:</label><br>
+            <input type="text" id="edit-name" placeholder="Task"><br>
+
+            <label for="edit-start">Day and time the task will start:</label><br>
+            <input type="datetime-local" id="edit-start" name="Task Start Date" /><br>
+
+            <label for="edit-end">Day and time the task will end:</label><br>
+            <input type="datetime-local" id="edit-end" name="Task End Date" /><br>
+
+            <label for="edit-priority">Task priority:</label><br>
+            <input type="number" id="edit-priority" placeholder="Priority"><br>
+
+            <label for="edit-isCompleted">Whether task is completed:</label>
+            <input type="checkbox" id="edit-isCompleted"><br>
+
+            <input type="submit" value="Save">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+            <p id="feedback-edit"></p>
+        </form>
+    </div>
+
+
+
+    <h3>All Tasks</h3>
+    <p id="counter"></p>
+    <table>
+        <tr>
+            <th>Is Complete?</th>
+            <th>Task</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Priority</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody id="tasks"></tbody>
+    </table>
+
+    <script src="js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getItems();
+    </script>
+</body>
+</html>
